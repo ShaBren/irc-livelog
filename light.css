@@ -1,0 +1,210 @@
+body
+{
+	/*background-image: url( 'back.png' );*/
+	background-color: #eee8d5;
+	color:#002b36;
+	/*text-shadow: green 0 0 2px;*/
+	font-family: 'Antic', sans-serif;
+}
+
+a
+{
+	color:#002b36;
+	text-decoration: none;
+}
+
+.nick1
+{
+	color: #b58900;
+}
+
+.nick2
+{
+	color: #cb4b16;
+}
+
+.nick3
+{
+	color: #dc322f;
+}
+
+.nick4
+{
+	color: #d33682;
+}
+
+.nick5
+{
+	color: #6c71c4;
+}
+
+.nick6
+{
+	color: #268bd2;
+}
+
+.nick7
+{
+	color: #2aa198;
+}
+
+.nick8
+{
+	color: #859900;
+}
+
+table
+{
+	width:100%;
+}
+
+.action
+{
+	text-align: right;
+}
+
+.nick
+{
+	font-weight: bold;
+	/*text-shadow: white 0 0 2px;*/
+	text-shadow: 1px 1px 1px #cccccc;
+}
+
+.time
+{
+	color: #002b36;
+}
+
+.message
+{
+	color: #000000;
+	text-shadow: 1px 1px 1px #cccccc;
+}
+
+tr:nth-child(even)
+{
+	background-color: #eee8d5;
+}
+
+a:hover
+{
+	text-shadow: green 0 0 4px;
+}
+
+#header
+{
+	background-color: #fdf6e3;
+	opacity: 0.5;
+	-moz-opacity: 0.5;
+	filter: alpha(opacity=50);
+	max-width: 980px;
+	margin: auto;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	width: 80%;
+}
+
+#container
+{
+	max-width: 980px;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+	box-shadow: none;
+	height: 80%;
+}
+
+#menu
+{
+	background-color: #ffffff;
+	opacity: 0.5;
+	-moz-opacity: 0.5;
+	filter: alpha(opacity=50);
+	width: 200px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	float:left;
+}
+
+#content
+{
+	background-color: #fdf6e3;
+	opacity: 0.5;
+	-moz-opacity: 0.5;
+	filter: alpha(opacity=50);
+	padding: 10px;
+	max-height: 700px;
+	max-width: 960px;
+	overflow:auto;
+	font-family: 'Anonymous Pro', sans-serif;
+	width: 80%;
+	height: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+#footer
+{
+	background-color: #fdf6e3;
+	opacity: 0.5;
+	-moz-opacity: 0.5;
+	filter: alpha(opacity=50);
+	max-width: 980px;
+	margin: auto;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	margin-top: 20px;
+	width: 80%;
+}
+
+#footer p
+{
+	text-align: center;
+}
+
+#clear
+{
+	clear: both;
+	box-shadow: none;
+}
+
+#menu h3
+{
+	text-align: center;
+}
+
+div
+{
+	-webkit-box-shadow: 0 0 5px 1px #888888;
+	-moz-box-shadow: 0 0 5px 1px #888888;
+	box-shadow: 0 0 5px 1px #888888;
+}
+
+/*
+div:hover
+{
+	-webkit-box-shadow: 0 0 10px 1px green;
+	-moz-box-shadow: 0 0 10px 1px green;
+	box-shadow: 0 0 10px 1px green;
+
+}
+*/
+
+#header 
+{
+	text-align: center;
+	font-weight: bold;
+	font-size: xx-large;
+}
+
+#content h3
+{
+	text-align: center;
+}
+
+#time
+{
+	margin-top: 0;
+	padding-top: 0;
+	font-size: small;
+}
