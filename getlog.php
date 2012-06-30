@@ -24,32 +24,27 @@ $time = time() - $timeOffset;
 
 $results = $db->query( "SELECT * FROM log WHERE channel='$channel' AND time > $time" );
 
-$nickColors = array();
-$nickIndex = 1;
+$i = 0;
+
+while ( $row = $results->fetchArray() ) 
+{
+	$i++;
+}
+
+$results->reset();
 
 echo "<table>";
+
+if ( $i % 2 )
+{
+	echo "<tr></tr>";
+}
 
 while ( $row = $results->fetchArray() ) 
 {
 	$nick = $row[1];
 
-	if ( array_key_exists( $nick, $nickColors ) )
-	{
-		$nickColor = $nickColors[$nick];
-	}
-	else
-	{
-		$nickColor = "nick".$nickIndex;
-
-		$nickColors[$nick] = $nickColor;
-		
-		$nickIndex++;
-		
-		if ( $nickIndex > 8 )
-		{
-			$nickIndex = 1;
-		}
-	}
+	$nickColor = "nick" . ( ( ( crc32( $nick ) ) % 8 ) + 1 );
 
 	$msg = htmlspecialchars( $row[2] );
 	$time = strftime( "%T", $row[3] );
