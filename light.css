@@ -90,7 +90,7 @@ a:hover
 	background-color: #fdf6e3;
 }
 
-div
+div .shadow
 {
 	-webkit-box-shadow: 0 0 5px 1px #888888;
 	-moz-box-shadow: 0 0 5px 1px #888888;

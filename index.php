@@ -3,10 +3,20 @@
 <head>
 	<link rel="stylesheet" href="base.css" media="all">
 <?php 
-	if ( $_GET['style'] == 'light' )
+	switch ( $_GET['style'] )
+	{
+	case 'light':
 		echo '<link rel="stylesheet" href="light.css" media="all">';
-	else
+		break;
+	
+	case 'minimalist':
+		break;
+
+	default:
+	case 'dark':
 		echo '<link rel="stylesheet" href="dark.css" media="all">';
+		break;
+	}
 ?>
 	<link href='http://fonts.googleapis.com/css?family=Antic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
@@ -26,7 +36,16 @@
 	</div>
 
 	<div id="footer" class="shadow">
-		<p id="channels"></p>
+		<p>
+			<span id="channels"></span>
+			<span id="styles">
+				<select id="styleselect">
+					<option value="dark">Dark</option>
+					<option value="light">Light</option>
+					<option value="minimalist">Minimalist</option>
+				</select>
+			</span>
+		</p>
 		<p>Problems? Bug Sha`Bren on Freenode</p>
 	</div>
 </div>

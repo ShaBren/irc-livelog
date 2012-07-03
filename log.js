@@ -5,6 +5,7 @@ $( document ).ready( function()
 
 function doStart()
 {
+		setupStyles();
 		getChannels();
 		getData();
 		updateClock();
@@ -32,6 +33,14 @@ function getUrlVars()
 function getChannels()
 {
 		var logUrl = "getchans.php";
+		var urlVars = getUrlVars();
+		var channel = urlVars["channel"];
+		var style = urlVars["style"];
+
+		if ( !style )
+		{
+			style = "dark";
+		}
 
 		$.get( logUrl, function( data ) 
 			{
@@ -46,28 +55,47 @@ function getChannels()
 				}
 
 				channel = channel.replace(/%23/g, "#");
+
 				$( '#channelselect' ).val( channel );
+
+				$( '#channelselect' ).change( function()
+					{
+						var channel = $( "#channelselect" ).val();
+
+						channel = channel.replace(/#/g, "%23");
+
+						window.location = "http://lug.fltt.us/?style=" + style + "&channel=" + channel;
+					} 
+				);
+
 			} 
 		);
 
-		$( '#channels' ).change( function()
-			{
-				var channel = $( "#channelselect" ).val();
-
-				channel = channel.replace(/#/g, "%23");
-
-				window.location = "http://lug.fltt.us/?channel=" + channel
-			} 
-		);
 }
 
 function setupStyles()
 {
-		$( '#channels' ).change( function()
+		var urlVars = getUrlVars();
+		var channel = urlVars["channel"];
+		var style = urlVars["style"];
+
+		if ( !channel )
+		{
+			channel = "";
+		}
+
+		if ( !style )
+		{
+			style = "dark";
+		}
+
+		$( '#styleselect' ).val( style );
+
+		$( '#styleselect' ).change( function()
 			{
 				var style = $( "#styleselect" ).val();
 
-				window.location = "http://lug.fltt.us/?channel=" + style
+				window.location = "http://lug.fltt.us/?style=" + style + "&channel=" + channel;
 			} 
 		);
 }
@@ -116,7 +144,7 @@ function updateClock()
 		currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
 
 		// Compose the string for display
-		var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+		var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds;
 
 		// Update the time display
 		$( '#time' ).html( currentTimeString );
