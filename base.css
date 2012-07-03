@@ -1,54 +1,11 @@
 body
 {
-	background-color: #073642;
-	color: white;
 	font-family: 'Antic', sans-serif;
 }
 
 a
 {
-	color:white;
 	text-decoration: none;
-}
-
-.nick1
-{
-	color: #b58900;
-}
-
-.nick2
-{
-	color: #cb4b16;
-}
-
-.nick3
-{
-	color: #dc322f;
-}
-
-.nick4
-{
-	color: #d33682;
-}
-
-.nick5
-{
-	color: #6c71c4;
-}
-
-.nick6
-{
-	color: #268bd2;
-}
-
-.nick7
-{
-	color: #2aa198;
-}
-
-.nick8
-{
-	color: #859900;
 }
 
 table
@@ -64,32 +21,26 @@ table
 .nick
 {
 	font-weight: bold;
-	text-shadow: black 0 0 2px;
 }
 
 .time
 {
-	color: #586e75;
 }
 
 .message
 {
-	color: #eee8d5;
 }
 
 tr:nth-child(even)
 {
-	background-color: #0a0a0a;
 }
 
 a:hover
 {
-	text-shadow: green 0 0 4px;
 }
 
 #header
 {
-	background-color: #000000;
 	opacity: 0.5;
 	-moz-opacity: 0.5;
 	filter: alpha(opacity=50);
@@ -110,21 +61,8 @@ a:hover
 	height: 80%;
 }
 
-#menu
-{
-	background-color: #000000;
-	opacity: 0.5;
-	-moz-opacity: 0.5;
-	filter: alpha(opacity=50);
-	width: 200px;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	float:left;
-}
-
 #content
 {
-	background-color: #000000;
 	opacity: 0.5;
 	-moz-opacity: 0.5;
 	filter: alpha(opacity=50);
@@ -141,7 +79,6 @@ a:hover
 
 #footer
 {
-	background-color: #000000;
 	opacity: 0.5;
 	-moz-opacity: 0.5;
 	filter: alpha(opacity=50);
@@ -171,9 +108,6 @@ a:hover
 
 div
 {
-	-webkit-box-shadow: 0 0 5px 1px #888888;
-	-moz-box-shadow: 0 0 5px 1px #888888;
-	box-shadow: 0 0 5px 1px #888888;
 }
 
 #header 

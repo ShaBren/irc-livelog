@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
 <head>
+		<link rel="stylesheet" href="base.css" media="all">
 <?php 
 	if ( $_GET['style'] == 'light' )
 		echo '<link rel="stylesheet" href="light.css" media="all">';
 	else
-		echo '<link rel="stylesheet" href="default.css" media="all">';
+		echo '<link rel="stylesheet" href="dark.css" media="all">';
 ?>
 	<link href='http://fonts.googleapis.com/css?family=Antic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
