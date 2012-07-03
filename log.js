@@ -49,14 +49,12 @@ function getChannels()
 				var urlVars = getUrlVars();
 				var channel = urlVars["channel"];
 
-				if ( !channel )
+				if ( channel )
 				{
-					return;
+					channel = channel.replace(/%23/g, "#");
+
+					$( '#channelselect' ).val( channel );
 				}
-
-				channel = channel.replace(/%23/g, "#");
-
-				$( '#channelselect' ).val( channel );
 
 				$( '#channelselect' ).change( function()
 					{
