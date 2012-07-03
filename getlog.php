@@ -33,11 +33,11 @@ while ( $row = $results->fetchArray() )
 
 $results->reset();
 
-echo "<table>";
+echo "<table>\n";
 
 if ( $i % 2 )
 {
-	echo "<tr></tr>";
+	echo "<tr></tr>\n";
 }
 
 while ( $row = $results->fetchArray() ) 
@@ -52,11 +52,11 @@ while ( $row = $results->fetchArray() )
 
 	if ( $type == 'PRIVMSG' )
 	{
-		echo "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message'>$msg</td></tr>";
+		echo "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message'>$msg</td></tr>\n";
 	}
 	else if ( $type == 'ACTION' )
 	{
-		echo "<tr><td class='time'>$time</td><td class='nick $nickColor action'>*$nick</td> <td class='message'>$msg</td></tr>";
+		echo "<tr><td class='time'>$time</td><td class='nick $nickColor action'>*$nick</td> <td class='message'>$msg</td></tr>\n";
 	}
 }
 echo "</table>";
