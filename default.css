@@ -1,9 +1,7 @@
 body
 {
-	/*background-image: url( 'back.png' );*/
 	background-color: #073642;
 	color: white;
-	/*text-shadow: green 0 0 2px;*/
 	font-family: 'Antic', sans-serif;
 }
 
@@ -178,15 +176,6 @@ div
 	box-shadow: 0 0 5px 1px #888888;
 }
 
-/*
-div:hover
-{
-	-webkit-box-shadow: 0 0 10px 1px green;
-	-moz-box-shadow: 0 0 10px 1px green;
-	box-shadow: 0 0 10px 1px green;
-
-}
-*/
 #header 
 {
 	text-align: center;

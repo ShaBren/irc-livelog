@@ -1,9 +1,7 @@
 body
 {
-	/*background-image: url( 'back.png' );*/
 	background-color: #eee8d5;
 	color:#002b36;
-	/*text-shadow: green 0 0 2px;*/
 	font-family: 'Antic', sans-serif;
 }
 
@@ -66,7 +64,6 @@ table
 .nick
 {
 	font-weight: bold;
-	/*text-shadow: white 0 0 2px;*/
 	text-shadow: 1px 1px 1px #cccccc;
 }
 
@@ -179,16 +176,6 @@ div
 	-moz-box-shadow: 0 0 5px 1px #888888;
 	box-shadow: 0 0 5px 1px #888888;
 }
-
-/*
-div:hover
-{
-	-webkit-box-shadow: 0 0 10px 1px green;
-	-moz-box-shadow: 0 0 10px 1px green;
-	box-shadow: 0 0 10px 1px green;
-
-}
-*/
 
 #header 
 {
