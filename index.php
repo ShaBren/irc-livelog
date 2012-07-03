@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
 <head>
-		<link rel="stylesheet" href="base.css" media="all">
+	<link rel="stylesheet" href="base.css" media="all">
 <?php 
 	if ( $_GET['style'] == 'light' )
 		echo '<link rel="stylesheet" href="light.css" media="all">';
@@ -15,22 +15,20 @@
 	<script src="log.js"></script>
 </head>
 <body>
-<div id="header">
-	<span id="title">Please select a channel</span>
-	<br />
-	<span id="time"></span>
+<div id="container">
+	<div id="header" class="shadow">
+		<span id="title">Please select a channel</span>
+		<br />
+		<span id="time"></span>
+	</div>
+
+	<div id="content" class="shadow">
+	</div>
+
+	<div id="footer" class="shadow">
+		<p id="channels"></p>
+		<p>Problems? Bug Sha`Bren on Freenode</p>
+	</div>
 </div>
-
-<div id="content">
-</div>
-
-<div id="clear"></div>
-
-<div id="footer">
-<p id="channels"></p>
-<p>Problems? Bug Sha`Bren on Freenode</p>
-</div>
-
 </body>
 </html>
-

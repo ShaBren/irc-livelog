@@ -34,30 +34,42 @@ function getChannels()
 		var logUrl = "getchans.php";
 
 		$.get( logUrl, function( data ) 
-						{
-						$( '#channels' ).html( data );
+			{
+				$( '#channels' ).html( data );
 
-						var urlVars = getUrlVars();
-						var channel = urlVars["channel"];
+				var urlVars = getUrlVars();
+				var channel = urlVars["channel"];
 
-						if ( !channel )
-						{
-						return;
-						}
+				if ( !channel )
+				{
+					return;
+				}
 
-						channel = channel.replace(/%23/g, "#");
-						$( '#channelselect' ).val( channel );
-						} );
+				channel = channel.replace(/%23/g, "#");
+				$( '#channelselect' ).val( channel );
+			} 
+		);
 
 		$( '#channels' ).change( function()
-						{
-						var channel = $( "#channelselect" ).val();
+			{
+				var channel = $( "#channelselect" ).val();
 
-						channel = channel.replace(/#/g, "%23");
+				channel = channel.replace(/#/g, "%23");
 
-						window.location = "http://lug.fltt.us/?channel=" + channel
-						getData();
-						} );
+				window.location = "http://lug.fltt.us/?channel=" + channel
+			} 
+		);
+}
+
+function setupStyles()
+{
+		$( '#channels' ).change( function()
+			{
+				var style = $( "#styleselect" ).val();
+
+				window.location = "http://lug.fltt.us/?channel=" + style
+			} 
+		);
 }
 
 function getData()
@@ -68,7 +80,7 @@ function getData()
 
 		if ( !channel )
 		{
-				return;
+			return;
 		}
 
 
@@ -77,39 +89,31 @@ function getData()
 		var logUrl = "getlog.php?channel=" + channel + "&time=" + time;
 
 		$.get( logUrl, function( data ) 
-						{
-						if ( data != lastData )
-						{
-						data = data.replace( /\n/g, "<br>" );
-						$( '#content' ).html( data );
-						$( '#content' ).prop( { scrollTop: $( '#content' ).prop( 'scrollHeight' ) } );
-						lastData = data;
-						}
-						} );
+			{
+				if ( data != lastData )
+				{
+					$( '#content' ).html( data );
+					$( '#content' ).prop( { scrollTop: $( '#content' ).prop( 'scrollHeight' ) } );
+					lastData = data;
+				}
+			} 
+		);
 
-		setTimeout( "getData()", 500 );
+		setTimeout( "getData()", 1000 );
 }
 
-function updateClock ( )
+function updateClock()
 {
-		var currentTime = new Date ( );
+		var currentTime = new Date();
 
-		var currentHours = currentTime.getHours ( );
-		var currentMinutes = currentTime.getMinutes ( );
-		var currentSeconds = currentTime.getSeconds ( );
+		var currentHours = currentTime.getHours();
+		var currentMinutes = currentTime.getMinutes();
+		var currentSeconds = currentTime.getSeconds();
 
 		// Pad the minutes and seconds with leading zeros, if required
 		currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
 		currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
-
-		// Choose either "AM" or "PM" as appropriate
-		var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
-
-		// Convert the hours component to 12-hour format if needed
-		currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
-
-		// Convert an hours component of "0" to "12"
-		currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+		currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
 
 		// Compose the string for display
 		var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
