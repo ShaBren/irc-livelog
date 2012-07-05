@@ -40,6 +40,8 @@ if ( $i % 2 )
 	echo "<tr></tr>\n";
 }
 
+$pattern = '(?xi)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?«»“”‘’]))';
+
 while ( $row = $results->fetchArray() ) 
 {
 	$nick = $row[1];
@@ -47,6 +49,14 @@ while ( $row = $results->fetchArray() )
 	$nickColor = "nick" . ( ( ( crc32( $nick ) ) % 8 ) + 1 );
 
 	$msg = htmlspecialchars( $row[2] );
+
+	$msg = preg_replace_callback("#$pattern#i", function($matches) 
+		{
+	    	$input = $matches[0];
+		    $url = preg_match('!^https?://!i', $input) ? $input : "http://$input";
+			return '<a href="' . $url . '" rel="nofollow" target="_blank">' . "$input</a>";
+		}, $msg );
+
 	$time = strftime( "%T", $row[3] );
 	$type = $row[4];
 
