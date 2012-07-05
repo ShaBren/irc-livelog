@@ -122,3 +122,16 @@ div
 	font-size: small;
 }
 
+.loud {
+    -webkit-transition: text-shadow 1s linear, color 1s linear;
+    -moz-transition: text-shadow 1s linear, color 1s linear;
+    -ms-transition: text-shadow 1s linear, color 1s linear;
+    -o-transition: text-shadow 1s linear, color 1s linear;
+    transition: text-shadow 1s linear, color 1s linear;
+}
+.loud:hover,
+.loud.glow {
+    text-shadow: 0 0 5px red;
+	color: yellow;
+}
+

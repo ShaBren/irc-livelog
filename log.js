@@ -10,7 +10,8 @@ function doStart()
 		getData();
 		updateClock();
 		setInterval('updateClock()', 1000 );
-}
+
+		}
 
 var lastData = "";
 
@@ -121,6 +122,17 @@ function getData()
 					$( '#content' ).html( data );
 					$( '#content' ).prop( { scrollTop: $( '#content' ).prop( 'scrollHeight' ) } );
 					lastData = data;
+					
+					var glow = $('.loud');
+					
+					setInterval(
+						function()
+						{
+		    				glow.hasClass('glow') ? glow.removeClass('glow') : glow.addClass('glow');
+						}, 1000
+					);
+
+
 				}
 			} 
 		);
