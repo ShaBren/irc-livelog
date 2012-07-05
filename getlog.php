@@ -52,7 +52,14 @@ while ( $row = $results->fetchArray() )
 
 	if ( $type == 'PRIVMSG' )
 	{
-		echo "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message'>$msg</td></tr>\n";
+		if ( $nick == "LOUDBOT" )
+		{
+			echo "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message loud'>$msg</td></tr>\n";
+		}
+		else
+		{
+			echo "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message'>$msg</td></tr>\n";
+		}
 	}
 	else if ( $type == 'ACTION' )
 	{
