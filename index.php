@@ -46,7 +46,7 @@
 				</select>
 			</span>
 		</p>
-		<p>Problems? Bug Sha`Bren on Freenode</p>
+		<p>Maintained by <a href="mailto:shabren@shabren.com">Sha`Bren</a> | <a href="https://github.com/ShaBren/irc-livelog">Source</a></p>
 	</div>
 </div>
 </body>
