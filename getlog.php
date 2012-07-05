@@ -20,9 +20,18 @@ else
 	$channel = "#ncsulug";
 }
 
+if ( array_key_exists( 'timestamp', $_GET ) )
+{
+	$timestamp = $db->escapeString( $_GET['timestamp'] );
+}
+else
+{
+	$timestamp = "0";
+}
+
 $time = time() - $timeOffset;
 
-$results = $db->query( "SELECT * FROM log WHERE channel='$channel' AND time > $time" );
+$results = $db->query( "SELECT _ROWID_, * FROM log WHERE channel='$channel' AND time > $time AND _ROWID_ > $timestamp" );
 
 $i = 0;
 
@@ -33,22 +42,17 @@ while ( $row = $results->fetchArray() )
 
 $results->reset();
 
-echo "<table>\n";
-
-if ( $i % 2 )
-{
-	echo "<tr></tr>\n";
-}
+$log = "";
 
 $pattern = '(?xi)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?«»“”‘’]))';
 
 while ( $row = $results->fetchArray() ) 
 {
-	$nick = $row[1];
+	$nick = $row[2];
 
 	$nickColor = "nick" . ( ( ( crc32( $nick ) ) % 8 ) + 1 );
 
-	$msg = htmlspecialchars( $row[2] );
+	$msg = htmlspecialchars( $row[3] );
 
 	$msg = preg_replace_callback("#$pattern#i", function($matches) 
 		{
@@ -57,24 +61,31 @@ while ( $row = $results->fetchArray() )
 			return '<a href="' . $url . '" rel="nofollow" target="_blank">' . "$input</a>";
 		}, $msg );
 
-	$time = strftime( "%T", $row[3] );
-	$type = $row[4];
+	$time = strftime( "%T", $row[4] );
+	$type = $row[5];
+	$timestamp = $row[0];
 
 	if ( $type == 'PRIVMSG' )
 	{
 		if ( $nick == "LOUDBOT" )
 		{
-			echo "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message loud'>$msg</td></tr>\n";
+			$log .= "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message loud'>$msg</td></tr>\n";
 		}
 		else
 		{
-			echo "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message'>$msg</td></tr>\n";
+			$log .= "<tr><td class='time'>$time</td><td class='nick $nickColor'>&lt;$nick&gt;</td> <td class='message'>$msg</td></tr>\n";
 		}
 	}
 	else if ( $type == 'ACTION' )
 	{
-		echo "<tr><td class='time'>$time</td><td class='nick $nickColor action'>*$nick</td> <td class='message'>$msg</td></tr>\n";
+		$log .= "<tr><td class='time'>$time</td><td class='nick $nickColor action'>*$nick</td> <td class='message'>$msg</td></tr>\n";
 	}
 }
-echo "</table>";
+
+$log = json_encode( $log );
+
+$timestamp = json_encode( $timestamp );
+
+echo "{\"log\":$log, \"timestamp\":$timestamp}"
+
 ?>

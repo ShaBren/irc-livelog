@@ -11,9 +11,10 @@ function doStart()
 		updateClock();
 		setInterval('updateClock()', 1000 );
 
-		}
+}
 
 var lastData = "";
+var lastTimestamp = 0;
 
 // Read a page's GET URL variables and return them as an associative array.
 function getUrlVars()
@@ -113,26 +114,25 @@ function getData()
 
 		$( '#title' ).html( channel.replace( /%23/g, "#" ) );
 
-		var logUrl = "getlog.php?channel=" + channel + "&time=" + time;
+		var logUrl = "getlog.php?channel=" + channel + "&time=" + time + "&timestamp=" + lastTimestamp;
 
-		$.get( logUrl, function( data ) 
+		$.getJSON( logUrl, function( data ) 
 			{
-				if ( data != lastData )
+				if ( data.log != "" )
 				{
-					$( '#content' ).html( data );
+					lastTimestamp = data.timestamp;
+					lastData += data.log;
+					$( '#content' ).html( "<table>" + lastData + "</table>" );
 					$( '#content' ).prop( { scrollTop: $( '#content' ).prop( 'scrollHeight' ) } );
-					lastData = data;
 					
 					var glow = $('.loud');
-					
+
 					setInterval(
 						function()
 						{
 		    				glow.hasClass('glow') ? glow.removeClass('glow') : glow.addClass('glow');
 						}, 1000
 					);
-
-
 				}
 			} 
 		);
