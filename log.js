@@ -1,3 +1,8 @@
+/*
+	Copyright (c) 2012 Stephen Bryant
+	For conditions of distribution and use, see copyright notice in LICENSE
+*/
+
 $( document ).ready( function()
 				{
 				doStart();

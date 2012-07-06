@@ -1,4 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+	Copyright (c) 2012 Stephen Bryant
+	For conditions of distribution and use, see copyright notice in LICENSE
+-->
 <html lang="en" dir="ltr">
 <head>
 	<link rel="stylesheet" href="base.css" media="all">

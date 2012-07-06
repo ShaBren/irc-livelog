@@ -1,4 +1,8 @@
 <?php
+/*
+	Copyright (c) 2012 Stephen Bryant
+	For conditions of distribution and use, see copyright notice in LICENSE
+*/
 
 $db = new SQLite3( 'log.sqlite' );
 
