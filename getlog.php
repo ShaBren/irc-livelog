@@ -6,6 +6,8 @@
 
 $db = new SQLite3( 'log.sqlite' );
 
+date_default_timezone_set('America/New_York');
+
 if ( array_key_exists( 'time', $_GET ) and $_GET['time'] > 0 )
 {
 	$timeOffset = $_GET['time'];
