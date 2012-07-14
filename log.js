@@ -110,6 +110,7 @@ function getData()
 		var urlVars = getUrlVars();
 		var time = urlVars['time'];
 		var channel = urlVars["channel"];
+		var censor = urlVars["censor"];
 
 		if ( !channel )
 		{
@@ -119,7 +120,7 @@ function getData()
 
 		$( '#title' ).html( channel.replace( /%23/g, "#" ) );
 
-		var logUrl = "getlog.php?channel=" + channel + "&time=" + time + "&timestamp=" + lastTimestamp;
+		var logUrl = "getlog.php?channel=" + channel + "&time=" + time + "&timestamp=" + lastTimestamp + "&censor=" + censor;
 
 		$.getJSON( logUrl, function( data ) 
 			{

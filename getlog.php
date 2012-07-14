@@ -26,6 +26,15 @@ else
 	$channel = "#ncsulug";
 }
 
+if ( array_key_exists( 'censor', $_GET ) )
+{
+	$censor = $_GET['censor'];
+}
+else
+{
+	$censor = false;
+}
+
 if ( array_key_exists( 'timestamp', $_GET ) )
 {
 	$timestamp = $db->escapeString( $_GET['timestamp'] );
@@ -86,6 +95,24 @@ while ( $row = $results->fetchArray() )
 	{
 		$log .= "<tr><td class='time'>$time</td><td class='nick $nickColor action'>*$nick</td> <td class='message'>$msg</td></tr>\n";
 	}
+}
+
+if ( $censor == 1 )
+{
+	$results = $db->query( "SELECT word, replacement FROM badword" );
+
+	$badwords = array();
+	$replacements = array();
+
+	$i = 0;
+
+	while ( $row = $results->fetchArray() )
+	{
+		$badwords[] = "/\b" . $row[0] . "\b/i";
+		$replacements[] = $row[1];
+	}
+
+	$log = preg_replace( $badwords, $replacements, $log );
 }
 
 $log = json_encode( $log );
